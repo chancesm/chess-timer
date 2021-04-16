@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: unset;
+      height: 100%;
+      width: 100%;
+    }
+    .timers {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 32px;
+    }
+    .timers > div {
+      margin: 24px;
+      border: 2px solid black;
+    }
+    .timer1 {
+      display: flex;
+      flex-direction: column;
+    }
+    .timer1 > .indicator {
+      min-height: 12px;
+      min-width: 200px;
+    }
+    .timer1 > .timer {
+      width: 200px;
+    }
+    .timer2 {
+      display: flex;
+      flex-direction: column;
+    }
+    .timer2 > .indicator {
+      min-height: 12px;
+      min-width: 200px;
+    }
+    .timer2 > .timer {
+      width: 200px;
+    }
+  </style>
+  
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
+
+  <title>Chess Timer</title>
+</head>
+<body>
+  <div class="timers">
+    <div class="timer1">
+      <div class="indicator"></div>
+      <div class="timer">10:00</div>
+    </div>
+    <div class="timer2">
+      <div class="indicator"></div>
+      <div class="timer">10:00</div>
+    </div>
+  </div>
+  <div class="controls"></div>
+  <script>
+    // STATE
+    let playing = false;
+    let selectedTimer = 0;
+
+    // TIMER 1
+    const timer1 = document.querySelector(".timer1");
+    const timeVal1 = document.querySelector(".timer1 > .timer");
+
+    // TIMER 2
+    const timer2 = document.querySelector(".timer2");
+    const timeVal2 = document.querySelector(".timer2 > .timer");
+
+    // CONTROLS
+    const startButton = document.querySelector("#startStop");
+    const resetButton = document.querySelector("#reset");
+
+    timer1.addEventListener("click", () => {
+      console.log("PLAYER 1");
+      selectedTimer = 1;
+      button1.classList.add("active");
+      button2.classList.remove("active");
+    })
+
+    timer2.addEventListener("click", () => {
+      console.log("PLAYER 2");
+      selectedTimer = 2
+      button2.classList.add("active");
+      button1.classList.remove("active");
+    })
+
+    startButton.addEventListener("click", () => {
+      console.log(playing ? "Stopping" : "Starting");
+      playing = !playing;
+    })
+    resetButton.addEventListener("click", () => {
+      console.log("RESET")
+      playing = false;
+      selectedTimer = 0;
+      button1.classList.remove("active");
+      button2.classList.remove("active");
+
+    })
+
+  </script>
+</body>
+</html>
